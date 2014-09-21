@@ -1,0 +1,7 @@
+<h2>Edit Question</h2>
+	
+<%= form_for(@question, url: question_path(@question)) do |form| %>
+	<%= render(partial: 'questions/form', object: form) %>
+	<%= form.submit('Update') %> or <%= link_to 'Cancel', questions_path %>
+<% end %>
+

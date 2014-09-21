@@ -14,16 +14,7 @@ namespace :import do
     
     csv_file.each do |row|
       Question.transaction do
-        question = Question.new(text: row[:question])
-        
-        # create the answer and distractors
-        question.answer = Response.new(value: row[:answer], correct: true)
-        row[:distractors].split(',').map(&:strip).each do |distractor|
-          question.distractors << Response.new(value: distractor, correct: false)
-        end
-        
-        # save the question and associated answer and distractors
-        question.save!
+        question = Question.create!(query: row[:question], distractors_list: row[:distractors], answer: Answer.new( value: row[:answer] ))
       end
     end
   

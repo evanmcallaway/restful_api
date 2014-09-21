@@ -1,0 +1,6 @@
+<h3><%= @question.query %></h3>
+<% @question.responses.shuffle.each do |response| %>
+	<ul>
+		<li><%= "#{response.value} (#{response.correct?})" %></li>
+	</ul>
+<% end %>

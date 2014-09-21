@@ -1,0 +1,27 @@
+	<% if @question.errors.any? %>
+		<div style="border: solid 1px black; padding: 10px; background-color: yellow">
+			<h3>Errors:</h3>
+			<ul>
+				<% @question.errors.full_messages.each do |error| %>
+					<li><%= error %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+<table>
+	<tr>
+		<td><%= form.label(:query, 'Query:') %></td>
+		<td><%= form.text_field(:query) %></td>
+	</tr>
+	<%= form.fields_for :answer do |answer_form| %>
+		<tr>
+			<td><%= answer_form.label(:value, 'Answer:') %></td>
+			<td><%= answer_form.text_field :value %></td>
+		</tr>
+	<% end %>
+	<tr>
+		<td><%= form.label(:distractors_list, 'Distractor List, comma separated:') %></td>
+		<td><%= form.text_field(:distractors_list) %></td>
+	</tr>
+</table>
