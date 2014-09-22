@@ -39,7 +39,7 @@ class QuestionsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to questions_path }
         format.json { render xml: @question.errors.to_xml, status: 400 }
-        format.json { render json: @question.errors.to_json, :status: 400 }
+        format.json { render json: @question.errors.to_json, status: 400 }
       end
     end
   end
