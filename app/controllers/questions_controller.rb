@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
   
   # GET /questions
   def index
-    @questions = Question.filter_and_sort(params[:filter], params[:order]).paginate(:page => params[:page], per_page: (params[:page_size] || DEFAULT_PAGE_SIZE))
+    @questions = Question.filter_and_sort(params[:filter], params[:order]).paginate(page: params[:page], per_page: (params[:page_size] || DEFAULT_PAGE_SIZE))
     
     respond_to do |format|
       format.html
